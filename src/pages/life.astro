@@ -1,0 +1,1495 @@
+﻿---
+const title = "Life";
+
+const bodyImages = [
+  [
+    {
+      src: "/pic/1.JPG",
+      alt: "Two performers in a dark studio, connected at the hips by a piece of red fabric; one supports their body on hands and feet while the other leans backward across them with one leg extended.",
+      credit: "Photo Credit: @Pengyu Contemporary Dance"
+    }
+  ],
+  [
+    {
+      src: "/pic/2.JPG",
+      alt: "Two performers in a dark studio, seated and leaning into each other while extending their arms in opposite directions, with a small red ball held between their bodies.",
+      credit: "Photo Credit: @Pengyu Contemporary Dance"
+    }
+  ],
+  [
+    {
+      src: "/pic/3.JPG",
+      alt: "A performer bending forward inside a light-colored installation made of thin intersecting lines.",
+      credit: "Photo Credit: @Pengyu Contemporary Dance"
+    }
+  ],
+  [
+    {
+      src: "/pic/4.JPG",
+      alt: "A performer standing inside a web-like installation of red threads, her head is squeezing a red ball toward the wall.",
+      credit: "Photo Credit: @Pengyu Contemporary Dance"
+    }
+  ],
+  [
+    {
+      src: "/pic/5.JPG",
+      alt: "An intentionally upside-down image of two performers on a grassy riverbank: one lies along the grass holding a long bamboo pole across their body, while the other hangs from the pole with bent legs, making the river, trees, and sky appear inverted.",
+      credit: "Photo Credit: @Pengyu Contemporary Dance"
+    },
+    {
+      src: "/pic/6.JPG",
+      alt: "A person bending backward on a grassy field, under a cloudy sky.",
+      credit: "Photo Credit: @Pengyu Contemporary Dance"
+    }
+  ],
+  [
+    {
+      src: "/pic/7.jpg",
+      alt: "A performer inside a red-thread installation, reaching upward in a warm-toned indoor space.",
+      credit: "Photo Credit: @AdaQi"
+    }
+  ],
+  [
+    {
+      src: "/pic/8.jpg",
+      alt: "A performer crouching low on the ground under purple and yellow lighting.",
+      credit: "Photo Credit: @AdaQi"
+    }
+  ],
+  [
+    {
+      src: "/pic/9.jpg",
+      alt: "A dark seascape image showing a performer moving near the water with one arm raised.",
+      credit: "Photo Credit: @AdaQi"
+    }
+  ],
+  [
+    {
+      src: "/pic/10.jpg",
+      alt: "A wide seascape showing a small figure standing alone in shallow water near the horizon.",
+      credit: "Photo Credit: @AdaQi"
+    }
+  ],
+  [
+    {
+      src: "/pic/11.jpg",
+      alt: "A close-up portrait partially covered by translucent white fabric or netting.",
+      credit: "Photo Credit: @Xuan"
+    }
+  ],
+  [
+    {
+      src: "/pic/12.jpg",
+      alt: "A black-and-white image of a performer standing in a light-filled structure, wrapped by fabric and lines on her head.",
+      credit: "Photo Credit: @Xuan"
+    }
+  ],
+  [
+    {
+      src: "/pic/13.jpg",
+      alt: "An upside-down portrait of a person with a spider near their eye.",
+      credit: "Photo Credit: @Xuan"
+    }
+  ],
+  [
+    {
+      src: "/pic/14.jpg",
+      alt: "A soft portrait of a person with short hair, wearing a white garment and a small spider on the shoulder.",
+      credit: "Photo Credit: @Xuan"
+    }
+  ],
+  [
+    {
+      src: "/pic/15.png",
+      alt: "A dark outdoor scene showing a person crouching near a white lion figure.",
+      credit: "Photo Credit: @Chuanchuan"
+    },
+    {
+      src: "/pic/16.png",
+      alt: "A night scene showing a performer crouching on a white bedsheet, facing a white lion statue in an outdoor grassy area.",
+      credit: "Photo Credit: @Chuanchuan"
+    }
+  ]
+];
+
+const gatheringImageGroups = [
+  [
+    {
+      src: "/pic/workshop-colorful-1.jpg",
+      alt: "Close-up of two painted hands pressing onto a white mat, leaving red, blue, and purple marks during an outdoor color workshop.",
+      credit: "Color workshop · Credit: @Xuan"
+    },
+    {
+      src: "/pic/workshop-colorful-2.jpg",
+      alt: "Two participants using their painted bodies and hands to make marks on a large cloth spread across the grass during an outdoor movement and color workshop.",
+      credit: "Color workshop · Credit: @Xuan"
+    },
+    {
+      src: "/pic/workshop-colorful-3.jpg",
+      alt: "A group of participants smiling at the camera on a large outdoor cloth covered with colorful paint, with paint marks on their faces, hands, and clothes.",
+      credit: "Color workshop · Credit: @Xuan"
+    }
+  ],
+  [
+    {
+      src: "/pic/workshop-line-1.jpg",
+      alt: "A black-and-white workshop image showing several blurred figures moving with long lines in a dim room, creating a sense of motion and connection.",
+      credit: "Line workshop · Credit: @Xiaochang"
+    },
+    {
+      src: "/pic/workshop-line-2-normalized.jpg",
+      alt: "A black-and-white workshop image of two blurred participants moving with a long line stretched between them.",
+      credit: "Line workshop · Credit: @Xiaochang"
+    },
+    {
+      src: "/pic/workshop-line-3.jpg",
+      alt: "A black-and-white workshop image showing one participant seated on the floor while another figure dances nearby, with a long line crossing the space between them.",
+      credit: "Line workshop · Credit: @Xiaochang"
+    }
+  ],
+  [
+    {
+      src: "/pic/workshop-surface-1.jpg",
+      alt: "A group of participants standing against a white wall, each holding a different leaning, reaching, or bending pose during a movement workshop.",
+      credit: "Surface workshop · Credit: @Beijing CI"
+    },
+    {
+      src: "/pic/workshop-surface-2.jpg",
+      alt: "Several participants moving along a white wall in a workshop, bending, arching, and leaning as they explore different body shapes and directions.",
+      credit: "Surface workshop · Credit: @Beijing CI"
+    },
+    {
+      src: "/pic/workshop-surface-3.jpg",
+      alt: "A line of participants against a white wall, each making a distinct full-body shape through bending, reaching, leaning, or stretching during a movement exercise.",
+      credit: "Surface workshop · Credit: @Beijing CI"
+    }
+  ]
+];
+
+const carouselImages = [...bodyImages, ...bodyImages, ...bodyImages];
+const initialCarouselIndex = bodyImages.length + 7;
+const bodyLightboxImages = bodyImages.flat();
+const gatheringImages = gatheringImageGroups.flat();
+const gatheringLabels = ["Color", "Line", "Surface"];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/jpeg" href="/favicon.jpg" />
+    <title>{title} | LISA LIAO JINGYI</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#page-title">Skip to main content</a>
+    <button
+      class="accessibility-toggle"
+      type="button"
+      aria-pressed="false"
+      aria-label="Toggle high contrast mode"
+    >
+      High contrast
+    </button>
+    <main class="page-shell">
+      <header>
+        <nav aria-label="Main navigation">
+          <a href="/">About</a>
+          <a href="/project/">Project</a>
+          <a href="/publication/">Publication</a>
+          <a href="/life/">Life</a>
+        </nav>
+      </header>
+
+      <section class="life-hero" aria-labelledby="page-title">
+        <h1 id="page-title">Fabric of life</h1>
+        <p>
+          I believe that the intuition of the body and the fragments of ordinary life can weave
+          together another kinds of imagination rooted in care. Beyond academia, I continuously
+          explore the body through contact improvisation and embodied media, and experiencing
+          alternative ways of living. I view these practices as forms of self-reflexivity and
+          expression. To see and feel the real person behind those abstract concepts.
+        </p>
+      </section>
+
+      <section class="life-page" aria-label="Life fragments">
+        <div class="life-content">
+        <section
+          class="life-section"
+          id="body-as-practice"
+          aria-labelledby="body-practice-title"
+        >
+          <div class="section-copy">
+            <h2 id="body-practice-title">Body as Practice</h2>
+            <p>
+              Body for me is a way of expression. Some visual arts were co-created with
+              photographers and directors; others came from informal field experiments. Across
+              them, I am interested in how movement, stillness, exposure, and landscape can hold
+              feelings that are difficult to explain in words.
+            </p>
+            <button class="video-work-button" type="button" data-open-video-work>
+              <span>Selected Video Work</span>
+              <span aria-hidden="true">+</span>
+            </button>
+          </div>
+
+          <div class="carousel-shell">
+            <button class="carousel-button carousel-prev" type="button" aria-label="Scroll images left">
+              &lsaquo;
+            </button>
+            <div class="image-carousel" tabindex="0" aria-label="Body as Practice image carousel">
+              {
+                carouselImages.map((slot, index) => (
+                  <figure
+                    class={`carousel-slot ${slot.length > 1 ? "stacked-slot" : ""}`}
+                    data-carousel-focus={index === initialCarouselIndex ? "true" : undefined}
+                  >
+                    {slot.map((image) => (
+                      <button
+                        class="carousel-image-button"
+                        type="button"
+                        data-lightbox-src={image.src}
+                        data-lightbox-alt={image.alt}
+                        data-lightbox-credit={image.credit}
+                        data-lightbox-gallery="body-practice"
+                        data-lightbox-index={String(bodyLightboxImages.findIndex((item) => item.src === image.src))}
+                        aria-label="Enlarge image"
+                      >
+                        <img src={image.src} alt={image.alt} loading="lazy" />
+                      </button>
+                    ))}
+                  </figure>
+                ))
+              }
+            </div>
+            <button class="carousel-button carousel-next" type="button" aria-label="Scroll images right">
+              &rsaquo;
+            </button>
+          </div>
+        </section>
+
+        <section
+          class="life-section gathering-section"
+          id="body-as-gathering"
+          aria-labelledby="body-gathering-title"
+        >
+          <div class="section-copy">
+            <h2 id="body-gathering-title">Body as Gathering</h2>
+            <p>
+              Body can also become a reason to gather. These moments are less about performance
+              and more about creating a shared space where people can move, improvise, connect
+              with each other, and experiment with trust, boundaries, and presence.
+            </p>
+          </div>
+
+          <div class="gathering-grid" aria-label="Body as Gathering images">
+            {
+              gatheringImageGroups.map((group, groupIndex) => (
+                <figure class="gathering-image">
+                  <button
+                    class="gathering-image-button"
+                    type="button"
+                    data-lightbox-src={group[0].src}
+                    data-lightbox-alt={group[0].alt}
+                    data-lightbox-credit={group[0].credit}
+                    data-lightbox-gallery={`body-gathering-${groupIndex}`}
+                    data-lightbox-index="0"
+                    aria-label={`Enlarge ${gatheringLabels[groupIndex]} workshop images`}
+                  >
+                    <img src={group[0].src} alt={group[0].alt} loading="lazy" />
+                    <span class="gathering-overlay" aria-hidden="true">{gatheringLabels[groupIndex]}</span>
+                  </button>
+                  <div hidden>
+                    {group.slice(1).map((image, index) => (
+                      <button
+                        type="button"
+                        data-lightbox-src={image.src}
+                        data-lightbox-alt={image.alt}
+                        data-lightbox-credit={image.credit}
+                        data-lightbox-gallery={`body-gathering-${groupIndex}`}
+                        data-lightbox-index={String(index + 1)}
+                      >
+                        {image.alt}
+                      </button>
+                    ))}
+                  </div>
+                </figure>
+              ))
+            }
+          </div>
+        </section>
+
+        <section
+          class="life-section simulation-section"
+          id="simulation-empathy-workshop"
+          aria-labelledby="simulation-empathy-title"
+        >
+          <div class="section-copy">
+            <h2 id="simulation-empathy-title">Empathy Simulation</h2>
+            <p>
+              This is a kind of workshop, an ongoing experiment in making inclusion-related issues
+              easier to approach. It creates an invitation for participants to encounter unfamiliar
+              experiences with curiosity and opens space where different ways of sensing, deciding,
+              and navigating the world can be felt and discussed.
+            </p>
+            <p>
+              These experiments began from my earlier work on gender-based violence prevention. I
+              hope to expand this format toward disability and other topics shaped by stereotypes
+              and assumptions.
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="life-section living-section"
+          id="alternative-way-of-living"
+          aria-labelledby="alternative-living-title"
+        >
+          <div class="section-copy">
+            <h2 id="alternative-living-title">Alternative Way of Living</h2>
+            <p>
+              This section gathers my curiosity about how life is actually built: how people define
+              safety and home, share resources and negotiate intimacy. These questions have led me
+              to visit and document communities experimenting with other ways of living, from
+              co-living spaces and rural self-sufficient projects to temporary worlds such as
+              Burning Man and tech-optimist kingdoms. These fragments are part of how I explore what
+              kind of life I want, and what forms of freedom and belonging are possible outside of
+              default life.
+            </p>
+          </div>
+        </section>
+
+        </div>
+      </section>
+      <dialog class="image-lightbox" id="life-image-lightbox" aria-label="Enlarged life image">
+        <button class="lightbox-close" type="button" aria-label="Close enlarged image">+</button>
+        <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous image">&lsaquo;</button>
+        <figure>
+          <img src="" alt="" />
+          <figcaption class="lightbox-credit"></figcaption>
+        </figure>
+        <button class="lightbox-nav lightbox-next" type="button" aria-label="Next image">&rsaquo;</button>
+      </dialog>
+      <dialog class="video-work-modal" id="gapping-modal" aria-labelledby="gapping-title">
+        <button class="modal-close" type="button" data-close-video-work aria-label="Close selected video work">
+          +
+        </button>
+        <div class="video-work-inner">
+          <div class="video-work-copy">
+            <p class="work-kicker">Selected Video Work</p>
+            <p class="work-title" id="gapping-title">GAPPING</p>
+            <div class="work-description">
+              <p>
+                An experimental dance film co-created with Director AdaQi
+                (<a href="https://adaqiying.com/" target="_blank" rel="noreferrer">adaqiying.com</a>),
+                it attempts to create a panoramic view of relationship composed of three queering
+                individuals that understand, demonstrate, and piece together an visual film through a
+                combination of improvised physical theatre and visual exploration.
+              </p>
+              <p>
+                It embodies a Sisyphean alternating climax, originating from the first touch of
+                fingertips.
+              </p>
+              <p>
+                The temporal and spatial dislocation in the present moment is not only reflected in
+                the delay of actions but also universalizes this experiential difference. The fusion
+                and fragmentation of individuals, the connection between subject and self/nature, as
+                well as a relationship characterized by ambiguity, specificity, manipulation, gaze,
+                and blur, may all be life experiences we possess in different time and space.
+              </p>
+            </div>
+          </div>
+          <div class="gapping-posters" aria-label="GAPPING promotional posters">
+            <button
+              class="poster-lightbox-button"
+              type="button"
+              data-poster-src="/pic/gapping-crop-1.png"
+              data-poster-alt="Two performers in a dim indoor scene pulling against each other, their bodies leaning in opposite directions as if resisting or pushing one another away."
+              data-poster-index="0"
+              aria-label="Enlarge GAPPING poster 1"
+            >
+              <img
+                src="/pic/gapping-crop-1.png"
+                alt="Two performers in a dim indoor scene pulling against each other, their bodies leaning in opposite directions as if resisting or pushing one another away."
+                loading="lazy"
+              />
+            </button>
+            <button
+              class="poster-lightbox-button"
+              type="button"
+              data-poster-src="/pic/gapping-crop-2.jpg"
+              data-poster-alt="A wide cinematic frame of two performers seated on the rooftop of an abandoned coal-mining industrial structure, with mountains and warm evening light in the background."
+              data-poster-index="1"
+              aria-label="Enlarge GAPPING poster 2"
+            >
+              <img
+                src="/pic/gapping-crop-2.jpg"
+                alt="A wide cinematic frame of two performers seated on the rooftop of an abandoned coal-mining industrial structure, with mountains and warm evening light in the background."
+                loading="lazy"
+              />
+            </button>
+            <button
+              class="poster-lightbox-button"
+              type="button"
+              data-poster-src="/pic/gapping-crop-3.jpg"
+              data-poster-alt="A close-up cinematic frame of a hand reaching toward bright sunlight, with strong lens flare against a dark background."
+              data-poster-index="2"
+              aria-label="Enlarge GAPPING poster 3"
+            >
+              <img
+                src="/pic/gapping-crop-3.jpg"
+                alt="A close-up cinematic frame of a hand reaching toward bright sunlight, with strong lens flare against a dark background."
+                loading="lazy"
+              />
+            </button>
+          </div>
+          <section class="exhibition-info" aria-labelledby="gapping-exhibition-title">
+            <h3 id="gapping-exhibition-title">Exhibition</h3>
+            <p>NAE OPEN 2026 at the New Art Exchange, Nottingham, UK</p>
+            <p>2023 at JinpiFang, Shenzhen, China</p>
+          </section>
+        </div>
+      </dialog>
+      <dialog class="poster-lightbox" id="poster-lightbox" aria-label="Enlarged GAPPING poster">
+        <button class="lightbox-close" type="button" data-close-poster-lightbox aria-label="Close enlarged poster">
+          +
+        </button>
+        <button class="lightbox-nav poster-prev" type="button" aria-label="Previous poster">&lsaquo;</button>
+        <img src="" alt="" />
+        <button class="lightbox-nav poster-next" type="button" aria-label="Next poster">&rsaquo;</button>
+      </dialog>
+    </main>
+    <script>
+      const contrastButton = document.querySelector(".accessibility-toggle");
+      const contrastPreference = localStorage.getItem("high-contrast") === "true";
+
+      const setHighContrast = (enabled) => {
+        document.body.classList.toggle("high-contrast", enabled);
+        contrastButton?.setAttribute("aria-pressed", String(enabled));
+        localStorage.setItem("high-contrast", String(enabled));
+      };
+
+      setHighContrast(contrastPreference);
+
+      contrastButton?.addEventListener("click", () => {
+        setHighContrast(!document.body.classList.contains("high-contrast"));
+      });
+
+      const carousel = document.querySelector(".image-carousel");
+      let isLoopJumping = false;
+
+      const keepCarouselInLoop = () => {
+        if (!(carousel instanceof HTMLElement) || isLoopJumping) {
+          return;
+        }
+
+        const loopWidth = carousel.scrollWidth / 3;
+        if (loopWidth <= 0) {
+          return;
+        }
+
+        if (carousel.scrollLeft < loopWidth * 0.58) {
+          isLoopJumping = true;
+          carousel.scrollLeft += loopWidth;
+          requestAnimationFrame(() => {
+            isLoopJumping = false;
+          });
+        } else if (carousel.scrollLeft > loopWidth * 1.72) {
+          isLoopJumping = true;
+          carousel.scrollLeft -= loopWidth;
+          requestAnimationFrame(() => {
+            isLoopJumping = false;
+          });
+        }
+      };
+
+      const scrollCarousel = (direction) => {
+        if (carousel instanceof HTMLElement) {
+          carousel.scrollBy({
+            left: carousel.clientWidth * 0.82 * direction,
+            behavior: "smooth"
+          });
+        }
+      };
+
+      document.querySelector(".carousel-prev")?.addEventListener("click", () => {
+        scrollCarousel(-1);
+      });
+      document.querySelector(".carousel-next")?.addEventListener("click", () => {
+        scrollCarousel(1);
+      });
+
+      const centerInitialCarouselImage = () => {
+        const target = document.querySelector('[data-carousel-focus="true"]');
+        if (carousel instanceof HTMLElement && target instanceof HTMLElement) {
+          carousel.scrollLeft = target.offsetLeft - (carousel.clientWidth - target.offsetWidth) / 2;
+        }
+      };
+
+      carousel?.addEventListener(
+        "scroll",
+        () => {
+          requestAnimationFrame(keepCarouselInLoop);
+        },
+        { passive: true }
+      );
+
+      requestAnimationFrame(() => {
+        centerInitialCarouselImage();
+        setTimeout(centerInitialCarouselImage, 80);
+      });
+
+      const lightbox = document.getElementById("life-image-lightbox");
+      const lightboxImage = lightbox?.querySelector("img");
+      const lightboxCredit = lightbox?.querySelector(".lightbox-credit");
+      const lightboxPrev = lightbox?.querySelector(".lightbox-prev");
+      const lightboxNext = lightbox?.querySelector(".lightbox-next");
+      let activeLightboxImages = [];
+      let activeImageIndex = 0;
+
+      const showLightboxImage = (index) => {
+        if (!(lightboxImage instanceof HTMLImageElement) || activeLightboxImages.length === 0) {
+          return;
+        }
+
+        activeImageIndex = (index + activeLightboxImages.length) % activeLightboxImages.length;
+        const image = activeLightboxImages[activeImageIndex];
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt;
+        if (lightboxCredit instanceof HTMLElement) {
+          lightboxCredit.textContent = image.credit;
+        }
+      };
+
+      document.addEventListener("click", (event) => {
+        const target = event.target;
+        const button = target instanceof Element ? target.closest("[data-lightbox-src]") : null;
+        if (!button || !(lightbox instanceof HTMLDialogElement)) {
+          return;
+        }
+
+        const gallery = button.getAttribute("data-lightbox-gallery") || "";
+        activeLightboxImages = Array.from(
+          document.querySelectorAll(`[data-lightbox-gallery="${gallery}"]`)
+        )
+          .sort(
+            (first, second) =>
+              Number(first.getAttribute("data-lightbox-index") || 0) -
+              Number(second.getAttribute("data-lightbox-index") || 0)
+          )
+          .reduce((images, galleryButton) => {
+            const src = galleryButton.getAttribute("data-lightbox-src") || "";
+            const alt = galleryButton.getAttribute("data-lightbox-alt") || "";
+            const credit = galleryButton.getAttribute("data-lightbox-credit") || "";
+            if (src && !images.some((image) => image.src === src)) {
+              images.push({ src, alt, credit });
+            }
+            return images;
+          }, []);
+        showLightboxImage(Number(button.getAttribute("data-lightbox-index") || 0));
+        lightbox.showModal();
+      });
+
+      lightbox?.addEventListener("click", (event) => {
+        if (event.target === lightbox && lightbox instanceof HTMLDialogElement) {
+          lightbox.close();
+        }
+      });
+
+      lightbox?.querySelector(".lightbox-close")?.addEventListener("click", () => {
+        if (lightbox instanceof HTMLDialogElement) {
+          lightbox.close();
+        }
+      });
+
+      lightboxPrev?.addEventListener("click", () => {
+        showLightboxImage(activeImageIndex - 1);
+      });
+
+      lightboxNext?.addEventListener("click", () => {
+        showLightboxImage(activeImageIndex + 1);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (!(lightbox instanceof HTMLDialogElement) || !lightbox.open) {
+          return;
+        }
+
+        if (event.key === "ArrowLeft") {
+          showLightboxImage(activeImageIndex - 1);
+        }
+
+        if (event.key === "ArrowRight") {
+          showLightboxImage(activeImageIndex + 1);
+        }
+      });
+
+      const gappingModal = document.getElementById("gapping-modal");
+      document.querySelector("[data-open-video-work]")?.addEventListener("click", () => {
+        if (gappingModal instanceof HTMLDialogElement) {
+          gappingModal.showModal();
+        }
+      });
+
+      gappingModal?.addEventListener("click", (event) => {
+        if (event.target === gappingModal && gappingModal instanceof HTMLDialogElement) {
+          gappingModal.close();
+        }
+      });
+
+      document.querySelector("[data-close-video-work]")?.addEventListener("click", () => {
+        if (gappingModal instanceof HTMLDialogElement) {
+          gappingModal.close();
+        }
+      });
+
+      const posterLightbox = document.getElementById("poster-lightbox");
+      const posterLightboxImage = posterLightbox?.querySelector("img");
+      const posterPrev = posterLightbox?.querySelector(".poster-prev");
+      const posterNext = posterLightbox?.querySelector(".poster-next");
+      const posterImages = Array.from(document.querySelectorAll("[data-poster-src]")).map((button) => ({
+        src: button.getAttribute("data-poster-src") || "",
+        alt: button.getAttribute("data-poster-alt") || ""
+      }));
+      let activePosterIndex = 0;
+
+      const showPosterImage = (index) => {
+        if (!(posterLightboxImage instanceof HTMLImageElement) || posterImages.length === 0) {
+          return;
+        }
+
+        activePosterIndex = (index + posterImages.length) % posterImages.length;
+        const image = posterImages[activePosterIndex];
+        posterLightboxImage.src = image.src;
+        posterLightboxImage.alt = image.alt;
+      };
+
+      document.addEventListener("click", (event) => {
+        const target = event.target;
+        const button = target instanceof Element ? target.closest("[data-poster-src]") : null;
+        if (!button || !(posterLightbox instanceof HTMLDialogElement)) {
+          return;
+        }
+
+        showPosterImage(Number(button.getAttribute("data-poster-index") || 0));
+        posterLightbox.showModal();
+      });
+
+      posterLightbox?.addEventListener("click", (event) => {
+        if (event.target === posterLightbox && posterLightbox instanceof HTMLDialogElement) {
+          posterLightbox.close();
+        }
+      });
+
+      document.querySelector("[data-close-poster-lightbox]")?.addEventListener("click", () => {
+        if (posterLightbox instanceof HTMLDialogElement) {
+          posterLightbox.close();
+        }
+      });
+
+      posterPrev?.addEventListener("click", () => {
+        showPosterImage(activePosterIndex - 1);
+      });
+
+      posterNext?.addEventListener("click", () => {
+        showPosterImage(activePosterIndex + 1);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (!(posterLightbox instanceof HTMLDialogElement) || !posterLightbox.open) {
+          return;
+        }
+
+        if (event.key === "ArrowLeft") {
+          showPosterImage(activePosterIndex - 1);
+        }
+
+        if (event.key === "ArrowRight") {
+          showPosterImage(activePosterIndex + 1);
+        }
+      });
+
+    </script>
+  </body>
+</html>
+
+<style>
+  :root {
+    color: #1f2933;
+    background: #faf8f4;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  .page-shell {
+    width: min(1180px, calc(100% - 44px));
+    margin: 0 auto;
+    padding: 30px 0 76px;
+  }
+
+  header {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 10px 22px;
+  }
+
+  nav a {
+    color: #3d4652;
+    font-size: 1rem;
+    text-decoration: none;
+  }
+
+  a {
+    color: inherit;
+    text-underline-offset: 0.18em;
+  }
+
+  a:hover,
+  nav a:hover {
+    color: #8a4a36;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  .image-carousel:focus-visible {
+    outline: 2px solid rgba(138, 74, 54, 0.68);
+    outline-offset: 4px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    z-index: 100;
+    transform: translateY(-140%);
+    border-radius: 6px;
+    padding: 10px 12px;
+    background: #faf8f4;
+    color: #14213d;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 12px 24px rgba(20, 33, 61, 0.14);
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
+  }
+
+  .accessibility-toggle {
+    position: fixed;
+    right: max(22px, calc((100vw - 1180px) / 2));
+    bottom: 18px;
+    z-index: 90;
+    min-height: 38px;
+    border: 2px solid rgba(20, 33, 61, 0.2);
+    border-radius: 8px;
+    padding: 8px 11px;
+    background: rgba(250, 248, 244, 0.92);
+    color: #14213d;
+    cursor: pointer;
+    font-size: 0.78rem;
+    font-weight: 800;
+    box-shadow: 0 12px 24px rgba(20, 33, 61, 0.12);
+  }
+
+  .accessibility-toggle[aria-pressed="true"] {
+    background: #000;
+    color: #fff200;
+    border-color: #fff200;
+  }
+
+  body.high-contrast {
+    background: #000;
+    color: #fff;
+  }
+
+  body.high-contrast *,
+  body.high-contrast *::before,
+  body.high-contrast *::after {
+    color: #fff !important;
+    border-color: #fff !important;
+    background-color: transparent;
+  }
+
+  body.high-contrast .life-page::before,
+  body.high-contrast .accessibility-toggle,
+  body.high-contrast .carousel-button,
+  body.high-contrast .image-lightbox,
+  body.high-contrast .video-work-modal,
+  body.high-contrast .poster-lightbox {
+    background: #000 !important;
+  }
+
+  body.high-contrast a,
+  body.high-contrast .accessibility-toggle,
+  body.high-contrast .video-work-button,
+  body.high-contrast .modal-close,
+  body.high-contrast .lightbox-close,
+  body.high-contrast .lightbox-nav {
+    color: #fff200 !important;
+  }
+
+  .life-hero {
+    min-height: calc(100vh - 104px);
+    max-width: 980px;
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    margin: 0 auto;
+    padding: clamp(52px, 8vw, 88px) 0 clamp(72px, 10vw, 112px);
+    transform: translateX(clamp(28px, 3.4vw, 62px));
+  }
+
+  h1,
+  h2,
+  p,
+  figure {
+    margin-top: 0;
+  }
+
+  h1 {
+    margin-bottom: 24px;
+    color: #14213d;
+    font-size: clamp(3rem, 7vw, 5.25rem);
+    line-height: 1;
+  }
+
+  .life-hero p {
+    max-width: 820px;
+    margin-bottom: 0;
+    color: #2f3a45;
+    font-size: clamp(1.22rem, 2.4vw, 1.8rem);
+    line-height: 1.42;
+  }
+
+  .life-page {
+    position: relative;
+    z-index: 0;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    margin-bottom: -76px;
+    padding: 96px max(22px, calc((100vw - 1180px) / 2)) 170px;
+    background: #ece5dc;
+    isolation: isolate;
+  }
+
+  .life-content {
+    min-width: 0;
+    max-width: 980px;
+    margin: 0 auto;
+    transform: translateX(clamp(28px, 3.4vw, 62px));
+  }
+
+  .life-page::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    top: -170px;
+    height: 170px;
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      rgba(250, 248, 244, 0) 0%,
+      rgba(236, 229, 220, 0.34) 30%,
+      #ece5dc 72%
+    );
+  }
+
+  .life-section {
+    max-width: 980px;
+    margin: 0;
+    padding: clamp(28px, 4vw, 44px) 0;
+  }
+
+  .section-copy {
+    width: min(800px, 100%);
+    max-width: 800px;
+    margin: 0 0 24px;
+  }
+
+  .section-copy h2 {
+    margin-bottom: 16px;
+    color: #14213d;
+    font-size: clamp(2.35rem, 4.5vw, 3.75rem);
+    line-height: 1.04;
+    letter-spacing: 0;
+  }
+
+  .section-copy p {
+    max-width: 800px;
+    margin-bottom: 0;
+    color: #2f3a45;
+    font-size: clamp(1.06rem, 1.55vw, 1.2rem);
+    line-height: 1.58;
+  }
+
+  .section-copy p + p {
+    margin-top: 14px;
+  }
+
+  .video-work-button {
+    margin-top: 14px;
+    border: 0;
+    border-bottom: 1px solid rgba(138, 74, 54, 0.28);
+    border-radius: 0;
+    padding: 0 0 2px;
+    background: transparent;
+    color: rgba(138, 74, 54, 0.78);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .video-work-button span:last-child {
+    width: 17px;
+    height: 17px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(138, 74, 54, 0.28);
+    border-radius: 999px;
+    color: rgba(138, 74, 54, 0.7);
+    font-size: 0.9rem;
+    line-height: 1;
+  }
+
+  .video-work-button:hover {
+    border-color: rgba(138, 74, 54, 0.72);
+    color: #8a4a36;
+    background: transparent;
+  }
+
+  .video-work-button:hover span:last-child {
+    border-color: rgba(138, 74, 54, 0.62);
+    color: #8a4a36;
+  }
+
+  .carousel-shell {
+    position: relative;
+    width: min(800px, 100%);
+    max-width: 800px;
+    margin: 0;
+  }
+
+  .image-carousel {
+    --carousel-gap: 4px;
+    --carousel-height: clamp(180px, 20vw, 250px);
+    display: flex;
+    align-items: flex-start;
+    gap: var(--carousel-gap);
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    padding: 8px 0 22px;
+  }
+
+  .image-carousel {
+    scrollbar-width: none;
+  }
+
+  .image-carousel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .carousel-slot {
+    position: relative;
+    display: grid;
+    flex: 0 0 auto;
+    gap: 4px;
+    height: var(--carousel-height);
+    width: fit-content;
+    margin: 0;
+    scroll-snap-align: start;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .carousel-image-button {
+    height: var(--carousel-height);
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: zoom-in;
+  }
+
+  .carousel-slot img {
+    width: auto;
+    height: var(--carousel-height);
+    max-width: none;
+    max-height: var(--carousel-height);
+    display: block;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 14px 28px rgba(20, 33, 61, 0.1);
+  }
+
+  .stacked-slot {
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .stacked-slot .carousel-image-button {
+    height: calc((var(--carousel-height) - 4px) / 2);
+  }
+
+  .stacked-slot img {
+    width: auto;
+    height: calc((var(--carousel-height) - 4px) / 2);
+    max-width: 100%;
+    max-height: calc((var(--carousel-height) - 4px) / 2);
+  }
+
+  .gathering-section {
+    padding-top: clamp(44px, 7vw, 76px);
+  }
+
+  .gathering-grid {
+    width: min(800px, 100%);
+    display: grid;
+    grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
+    gap: 8px;
+  }
+
+  .gathering-image {
+    min-width: 0;
+    margin: 0;
+    position: relative;
+  }
+
+  .gathering-image:first-child {
+    grid-row: span 2;
+  }
+
+  .gathering-image-button {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    min-height: 190px;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: zoom-in;
+  }
+
+.gathering-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20, 33, 61, 0.34);
+  color: rgba(250, 248, 244, 0.96);
+  font-size: clamp(1.9rem, 5.2vw, 4.2rem);
+  font-weight: 850;
+  letter-spacing: 0.03em;
+  opacity: 0;
+  transform: translateY(8px);
+    transition:
+      opacity 160ms ease,
+      transform 160ms ease;
+  }
+
+  .gathering-image-button:hover .gathering-overlay,
+  .gathering-image-button:focus-visible .gathering-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .gathering-image:first-child .gathering-image-button {
+    min-height: clamp(300px, 38vw, 440px);
+  }
+
+  .gathering-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 4px;
+    box-shadow: 0 14px 28px rgba(20, 33, 61, 0.1);
+  }
+
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(20, 33, 61, 0.08);
+    border-radius: 999px;
+    background: rgba(250, 248, 244, 0.42);
+    color: rgba(138, 74, 54, 0.58);
+    cursor: pointer;
+    font-size: 1.7rem;
+    line-height: 1;
+    transform: translateY(-50%);
+  }
+
+  .carousel-button:hover {
+    background: rgba(250, 248, 244, 0.68);
+    color: rgba(138, 74, 54, 0.8);
+  }
+
+  .carousel-prev {
+    left: -18px;
+  }
+
+  .carousel-next {
+    right: -18px;
+  }
+
+  .image-lightbox {
+    width: fit-content;
+    max-width: calc(100vw - 44px);
+    max-height: 88vh;
+    border: 0;
+    border-radius: 8px;
+    padding: 22px;
+    background: rgba(250, 248, 244, 0.34);
+    backdrop-filter: blur(18px) saturate(1.08);
+    box-shadow: 0 28px 70px rgba(20, 33, 61, 0.18);
+  }
+
+  .image-lightbox::backdrop {
+    background: rgba(20, 33, 61, 0.32);
+    backdrop-filter: blur(6px);
+  }
+
+  .image-lightbox img {
+    width: auto;
+    max-width: calc(100vw - 88px);
+    max-height: calc(88vh - 78px);
+    display: block;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  .image-lightbox figure {
+    margin: 0;
+  }
+
+  .lightbox-credit {
+    margin-top: 10px;
+    color: rgba(20, 33, 61, 0.72);
+    font-size: 0.82rem;
+    line-height: 1.4;
+    text-align: center;
+  }
+
+  .lightbox-close,
+  .lightbox-nav {
+    position: absolute;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(20, 33, 61, 0.1);
+    border-radius: 999px;
+    background: rgba(250, 248, 244, 0.58);
+    color: rgba(138, 74, 54, 0.72);
+    cursor: pointer;
+  }
+
+  .lightbox-close {
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    font-size: 1.4rem;
+    line-height: 1;
+    transform: rotate(45deg);
+  }
+
+  .lightbox-nav {
+    top: 50%;
+    width: 42px;
+    height: 42px;
+    font-size: 2rem;
+    line-height: 1;
+    transform: translateY(-50%);
+  }
+
+  .lightbox-prev {
+    left: 14px;
+  }
+
+  .lightbox-next {
+    right: 14px;
+  }
+
+  .poster-prev {
+    left: 14px;
+  }
+
+  .poster-next {
+    right: 14px;
+  }
+
+  .lightbox-close:hover,
+  .lightbox-nav:hover {
+    background: rgba(250, 248, 244, 0.82);
+    color: #8a4a36;
+  }
+
+  .video-work-modal {
+    width: min(1120px, calc(100vw - 44px));
+    max-height: 88vh;
+    overflow: auto;
+    border: 0;
+    border-radius: 8px;
+    padding: clamp(22px, 4vw, 42px);
+    background: rgba(250, 248, 244, 0.78);
+    box-shadow: 0 28px 70px rgba(20, 33, 61, 0.2);
+  }
+
+  .video-work-modal::backdrop {
+    background: rgba(20, 33, 61, 0.34);
+    backdrop-filter: blur(6px);
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(20, 33, 61, 0.1);
+    border-radius: 999px;
+    background: rgba(250, 248, 244, 0.64);
+    color: rgba(138, 74, 54, 0.76);
+    cursor: pointer;
+    font-size: 1.4rem;
+    line-height: 1;
+    transform: rotate(45deg);
+  }
+
+  .video-work-inner {
+    width: min(100%, 1040px);
+    margin: 0 auto;
+  }
+
+  .video-work-copy {
+    width: 100%;
+  }
+
+  .video-work-copy .work-kicker {
+    margin-bottom: 12px;
+    color: rgba(138, 74, 54, 0.76);
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .video-work-copy .work-title {
+    margin-bottom: 22px;
+    color: #14213d;
+    font-size: clamp(2.5rem, 6vw, 5.4rem);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: 0;
+  }
+
+  .video-work-copy p,
+  .exhibition-info p {
+    color: #2f3a45;
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .work-description {
+    width: 100%;
+    max-width: none;
+  }
+
+  .work-description p {
+    margin-bottom: 14px;
+  }
+
+  .video-work-copy a {
+    color: #8a4a36;
+    font-weight: 700;
+  }
+
+  .gapping-posters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin: 30px 0 22px;
+    align-items: start;
+  }
+
+  .gapping-posters img {
+    width: 100%;
+    height: auto;
+    max-height: 520px;
+    display: block;
+    object-fit: contain;
+    border-radius: 4px;
+  }
+
+  .poster-lightbox-button {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: zoom-in;
+  }
+
+  .exhibition-info {
+    width: 100%;
+    max-width: none;
+  }
+
+  .exhibition-info h3 {
+    margin-bottom: 10px;
+    color: #14213d;
+    font-size: 1.05rem;
+    line-height: 1.2;
+  }
+
+  .exhibition-info p {
+    margin-bottom: 4px;
+  }
+
+  .poster-lightbox {
+    width: fit-content;
+    max-width: calc(100vw - 44px);
+    max-height: 88vh;
+    border: 0;
+    border-radius: 8px;
+    padding: 22px;
+    background: rgba(250, 248, 244, 0.34);
+    backdrop-filter: blur(18px) saturate(1.08);
+    box-shadow: 0 28px 70px rgba(20, 33, 61, 0.18);
+  }
+
+  .poster-lightbox::backdrop {
+    background: rgba(20, 33, 61, 0.32);
+    backdrop-filter: blur(6px);
+  }
+
+  .poster-lightbox img {
+    width: auto;
+    max-width: calc(100vw - 88px);
+    max-height: calc(88vh - 44px);
+    display: block;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  @media (max-width: 900px) {
+    .image-carousel {
+      --carousel-height: 210px;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .page-shell {
+      width: min(100% - 28px, 940px);
+      padding-top: 22px;
+    }
+
+    .accessibility-toggle {
+      right: 14px;
+    }
+
+    nav {
+      gap: 10px 16px;
+    }
+
+    .life-hero {
+      min-height: calc(100vh - 88px);
+      padding: 48px 0 64px;
+      transform: none;
+    }
+
+    h1 {
+      font-size: clamp(2.55rem, 13vw, 3.3rem);
+    }
+
+    .life-page {
+      padding-top: 72px;
+    }
+
+    .life-content {
+      transform: none;
+    }
+
+    .section-copy h2 {
+      font-size: clamp(2rem, 10vw, 3rem);
+    }
+
+    .carousel-button {
+      display: none;
+    }
+
+    .gapping-posters {
+      grid-template-columns: 1fr;
+    }
+
+    .gapping-posters img {
+      height: auto;
+      max-height: 360px;
+      object-fit: contain;
+    }
+
+    .gathering-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .gathering-image:first-child {
+      grid-row: auto;
+    }
+
+    .gathering-image-button,
+    .gathering-image:first-child .gathering-image-button {
+      min-height: 260px;
+    }
+
+    .gathering-overlay {
+      display: none;
+    }
+  }
+
+  @media (hover: none) {
+    .gathering-overlay {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .image-carousel {
+      scroll-behavior: auto;
+    }
+  }
+</style>
