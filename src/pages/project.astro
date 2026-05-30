@@ -393,18 +393,27 @@ const projectLinks = projects.map((project) => project.title);
               )}
               {project.images && (
                 <div class="modal-gallery" aria-label="Project images">
-                  {project.images.map((image) => (
-                    <button
-                      class="gallery-button"
-                      type="button"
-                      data-lightbox-src={image.src}
-                      data-lightbox-alt={image.alt}
-                      data-gallery={project.title}
-                      data-gallery-index={String(index)}
-                      aria-label={image.alt}
-                    >
-                      <img src={image.src} alt="" loading="lazy" />
-                    </button>
+                  {project.images.map((image, imageIndex) => (
+                    <figure class="gallery-item">
+                      <img
+                        id={`project-${index + 1}-image-${imageIndex + 1}-description`}
+                        src={image.src}
+                        alt={image.alt}
+                        loading="lazy"
+                      />
+                      <button
+                        class="gallery-button"
+                        type="button"
+                        data-lightbox-src={image.src}
+                        data-lightbox-alt={image.alt}
+                        data-gallery={project.title}
+                        data-gallery-index={String(imageIndex)}
+                        aria-label={`View larger image ${imageIndex + 1}`}
+                        aria-describedby={`project-${index + 1}-image-${imageIndex + 1}-description`}
+                      >
+                        <span class="sr-only">View larger image {imageIndex + 1}</span>
+                      </button>
+                    </figure>
                   ))}
                 </div>
               )}
@@ -412,10 +421,19 @@ const projectLinks = projects.map((project) => project.title);
           ) : null
         )
       }
-      <dialog class="image-lightbox" id="image-lightbox" aria-label="Enlarged project image">
+      <dialog
+        class="image-lightbox"
+        id="image-lightbox"
+        aria-labelledby="project-lightbox-title"
+        aria-describedby="project-lightbox-description"
+      >
         <button class="lightbox-close" type="button" aria-label="Close enlarged image">+</button>
         <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous image">‹</button>
-        <img src="" alt="" />
+        <h2 class="sr-only" id="project-lightbox-title">Project image gallery</h2>
+        <figure>
+          <img src="" alt="" />
+        </figure>
+        <p class="sr-only" id="project-lightbox-description" aria-live="polite"></p>
         <button class="lightbox-nav lightbox-next" type="button" aria-label="Next image">›</button>
       </dialog>
     </main>
@@ -482,10 +500,13 @@ const projectLinks = projects.map((project) => project.title);
 
       const lightbox = document.getElementById("image-lightbox");
       const lightboxImage = lightbox?.querySelector("img");
+      const lightboxTitle = document.getElementById("project-lightbox-title");
+      const lightboxDescription = document.getElementById("project-lightbox-description");
       const lightboxPrev = lightbox?.querySelector(".lightbox-prev");
       const lightboxNext = lightbox?.querySelector(".lightbox-next");
       let activeGallery = [];
       let activeImageIndex = 0;
+      let activeGalleryName = "Project image gallery";
 
       const showLightboxImage = (index) => {
         if (!(lightboxImage instanceof HTMLImageElement) || activeGallery.length === 0) {
@@ -494,8 +515,15 @@ const projectLinks = projects.map((project) => project.title);
 
         activeImageIndex = (index + activeGallery.length) % activeGallery.length;
         const image = activeGallery[activeImageIndex];
+        const positionLabel = `${activeGalleryName}, image ${activeImageIndex + 1} of ${activeGallery.length}`;
         lightboxImage.src = image.src;
         lightboxImage.alt = image.alt;
+        if (lightboxTitle instanceof HTMLElement) {
+          lightboxTitle.textContent = positionLabel;
+        }
+        if (lightboxDescription instanceof HTMLElement) {
+          lightboxDescription.textContent = image.alt;
+        }
       };
 
       document.addEventListener("click", (event) => {
@@ -506,6 +534,7 @@ const projectLinks = projects.map((project) => project.title);
         }
 
         const galleryName = button.getAttribute("data-gallery");
+        activeGalleryName = galleryName ? `${galleryName} gallery` : "Project image gallery";
         activeGallery = Array.from(
           document.querySelectorAll(`[data-gallery="${galleryName}"]`)
         ).map((galleryButton) => ({
@@ -623,6 +652,15 @@ const projectLinks = projects.map((project) => project.title);
 
   .skip-link:focus-visible {
     transform: translateY(0);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
   }
 
   .accessibility-toggle {
@@ -1131,9 +1169,17 @@ const projectLinks = projects.map((project) => project.title);
     padding: 0 30px 32px;
   }
 
+  .gallery-item {
+    position: relative;
+    margin: 0;
+  }
+
   .gallery-button {
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
+    height: 100%;
     border: 0;
     padding: 0;
     background: transparent;
