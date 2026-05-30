@@ -203,6 +203,7 @@ const initialCarouselIndex = bodyImages.length + 7;
 const carouselSlots = carouselImages.map((slot, index) => ({
   index,
   isPriorityBodySlot: Math.abs(index - initialCarouselIndex) <= 1,
+  isScreenReaderSlot: index >= bodyImages.length && index < bodyImages.length * 2,
   slot
 }));
 const bodyLightboxImages = bodyImages.flat();
@@ -284,15 +285,17 @@ const gatheringLabels = ["Color", "Line", "Surface"];
               aria-label="Body as Practice image carousel"
             >
               {
-                carouselSlots.map(({ slot, index, isPriorityBodySlot }) => (
+                carouselSlots.map(({ slot, index, isPriorityBodySlot, isScreenReaderSlot }) => (
                     <figure
                       class={`carousel-slot ${slot.length > 1 ? "stacked-slot" : ""}`}
                       data-carousel-focus={index === initialCarouselIndex ? "true" : undefined}
+                      aria-hidden={isScreenReaderSlot ? undefined : "true"}
                     >
                       {slot.map((image) => (
                         <button
                           class="carousel-image-button"
                           type="button"
+                          tabindex={isScreenReaderSlot ? undefined : "-1"}
                           data-lightbox-src={image.src}
                           data-lightbox-alt={image.alt}
                           data-lightbox-credit={image.credit}
