@@ -404,14 +404,13 @@ const projectLinks = projects.map((project) => project.title);
                       <button
                         class="gallery-button"
                         type="button"
+                        tabindex="-1"
+                        aria-hidden="true"
                         data-lightbox-src={image.src}
                         data-lightbox-alt={image.alt}
                         data-gallery={project.title}
                         data-gallery-index={String(imageIndex)}
-                        aria-label={`View larger image ${imageIndex + 1}`}
-                        aria-describedby={`project-${index + 1}-image-${imageIndex + 1}-description`}
                       >
-                        <span class="sr-only">View larger image {imageIndex + 1}</span>
                       </button>
                     </figure>
                   ))}
