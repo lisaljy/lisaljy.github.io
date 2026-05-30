@@ -401,7 +401,7 @@ const projectLinks = projects.map((project) => project.title);
                       data-lightbox-alt={image.alt}
                       data-gallery={project.title}
                       data-gallery-index={String(index)}
-                      aria-label={`Open image: ${image.alt}`}
+                      aria-label={image.alt}
                     >
                       <img src={image.src} alt="" loading="lazy" />
                     </button>

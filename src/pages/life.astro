@@ -298,7 +298,7 @@ const gatheringLabels = ["Color", "Line", "Surface"];
                           data-lightbox-credit={image.credit}
                           data-lightbox-gallery="body-practice"
                           data-lightbox-index={String(bodyLightboxImages.findIndex((item) => item.src === image.src))}
-                          aria-label={`Open image: ${image.alt}`}
+                          aria-label={image.alt}
                         >
                           <img
                             src={image.src}
@@ -347,7 +347,7 @@ const gatheringLabels = ["Color", "Line", "Surface"];
                     data-lightbox-credit={group[0].credit}
                     data-lightbox-gallery={`body-gathering-${groupIndex}`}
                     data-lightbox-index="0"
-                    aria-label={`Open ${gatheringLabels[groupIndex]} workshop images: ${group[0].alt}`}
+                    aria-label={`${gatheringLabels[groupIndex]} workshop gallery, ${group.length} images`}
                   >
                     <img src={group[0].src} alt="" loading="lazy" />
                     <span class="gathering-overlay" aria-hidden="true">{gatheringLabels[groupIndex]}</span>
@@ -361,7 +361,7 @@ const gatheringLabels = ["Color", "Line", "Surface"];
                         data-lightbox-credit={image.credit}
                         data-lightbox-gallery={`body-gathering-${groupIndex}`}
                         data-lightbox-index={String(index + 1)}
-                        aria-label={`Open ${gatheringLabels[groupIndex]} workshop image: ${image.alt}`}
+                        aria-label={`${gatheringLabels[groupIndex]} workshop image ${index + 2}: ${image.alt}`}
                       >
                         {image.alt}
                       </button>
@@ -460,7 +460,7 @@ const gatheringLabels = ["Color", "Line", "Surface"];
               data-poster-src="/pic/gapping-crop-1.png"
               data-poster-alt="Two performers in a dim indoor scene pulling against each other, their bodies leaning in opposite directions as if resisting or pushing one another away."
               data-poster-index="0"
-              aria-label="Open GAPPING poster: Two performers in a dim indoor scene pulling against each other, their bodies leaning in opposite directions as if resisting or pushing one another away."
+              aria-label="GAPPING poster 1"
             >
               <img
                 src="/pic/gapping-crop-1.png"
@@ -474,7 +474,7 @@ const gatheringLabels = ["Color", "Line", "Surface"];
               data-poster-src="/pic/gapping-crop-2.jpg"
               data-poster-alt="A wide cinematic frame of two performers seated on the rooftop of an abandoned coal-mining industrial structure, with mountains and warm evening light in the background."
               data-poster-index="1"
-              aria-label="Open GAPPING poster: A wide cinematic frame of two performers seated on the rooftop of an abandoned coal-mining industrial structure, with mountains and warm evening light in the background."
+              aria-label="GAPPING poster 2"
             >
               <img
                 src="/pic/gapping-crop-2.jpg"
@@ -488,7 +488,7 @@ const gatheringLabels = ["Color", "Line", "Surface"];
               data-poster-src="/pic/gapping-crop-3.jpg"
               data-poster-alt="A close-up cinematic frame of a hand reaching toward bright sunlight, with strong lens flare against a dark background."
               data-poster-index="2"
-              aria-label="Open GAPPING poster: A close-up cinematic frame of a hand reaching toward bright sunlight, with strong lens flare against a dark background."
+              aria-label="GAPPING poster 3"
             >
               <img
                 src="/pic/gapping-crop-3.jpg"
