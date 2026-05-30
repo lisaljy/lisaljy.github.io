@@ -342,17 +342,22 @@ const gatheringLabels = ["Color", "Line", "Surface"];
             {
               gatheringImageGroups.map((group, groupIndex) => (
                 <figure class="gathering-image">
+                  <span class="sr-only" id={`gathering-gallery-help-${groupIndex}`}>
+                    Opens a gallery where each workshop image has a detailed description.
+                  </span>
                   <button
                     class="gathering-image-button"
                     type="button"
                     data-lightbox-src={group[0].src}
                     data-lightbox-alt={group[0].alt}
                     data-lightbox-credit={group[0].credit}
+                    data-lightbox-label={`${gatheringLabels[groupIndex]} workshop gallery`}
                     data-lightbox-gallery={`body-gathering-${groupIndex}`}
                     data-lightbox-index="0"
-                    aria-label={`${gatheringLabels[groupIndex]} workshop gallery, ${group.length} images`}
+                    aria-label={`View ${gatheringLabels[groupIndex]} workshop gallery, ${group.length} images`}
+                    aria-describedby={`gathering-gallery-help-${groupIndex}`}
                   >
-                    <img src={group[0].src} alt="" loading="lazy" />
+                    <img src={group[0].src} alt={group[0].alt} loading="lazy" />
                     <span class="gathering-overlay" aria-hidden="true">{gatheringLabels[groupIndex]}</span>
                   </button>
                   <div hidden>
@@ -362,6 +367,7 @@ const gatheringLabels = ["Color", "Line", "Surface"];
                         data-lightbox-src={image.src}
                         data-lightbox-alt={image.alt}
                         data-lightbox-credit={image.credit}
+                        data-lightbox-label={`${gatheringLabels[groupIndex]} workshop gallery`}
                         data-lightbox-gallery={`body-gathering-${groupIndex}`}
                         data-lightbox-index={String(index + 1)}
                         aria-label={`${gatheringLabels[groupIndex]} workshop image ${index + 2}: ${image.alt}`}
@@ -418,13 +424,20 @@ const gatheringLabels = ["Color", "Line", "Surface"];
 
         </div>
       </section>
-      <dialog class="image-lightbox" id="life-image-lightbox" aria-label="Enlarged life image">
+      <dialog
+        class="image-lightbox"
+        id="life-image-lightbox"
+        aria-labelledby="life-lightbox-title"
+        aria-describedby="life-lightbox-description"
+      >
         <button class="lightbox-close" type="button" aria-label="Close enlarged image">+</button>
         <button class="lightbox-nav lightbox-prev" type="button" aria-label="Previous image">&lsaquo;</button>
+        <h2 class="sr-only" id="life-lightbox-title">Image gallery</h2>
         <figure>
           <img src="" alt="" />
           <figcaption class="lightbox-credit"></figcaption>
         </figure>
+        <p class="sr-only" id="life-lightbox-description" aria-live="polite"></p>
         <button class="lightbox-nav lightbox-next" type="button" aria-label="Next image">&rsaquo;</button>
       </dialog>
       <dialog class="video-work-modal" id="gapping-modal" aria-labelledby="gapping-title">
@@ -635,10 +648,13 @@ const gatheringLabels = ["Color", "Line", "Surface"];
       const lightbox = document.getElementById("life-image-lightbox");
       const lightboxImage = lightbox?.querySelector("img");
       const lightboxCredit = lightbox?.querySelector(".lightbox-credit");
+      const lightboxTitle = document.getElementById("life-lightbox-title");
+      const lightboxDescription = document.getElementById("life-lightbox-description");
       const lightboxPrev = lightbox?.querySelector(".lightbox-prev");
       const lightboxNext = lightbox?.querySelector(".lightbox-next");
       let activeLightboxImages = [];
       let activeImageIndex = 0;
+      let activeLightboxLabel = "Image gallery";
 
       const showLightboxImage = (index) => {
         if (!(lightboxImage instanceof HTMLImageElement) || activeLightboxImages.length === 0) {
@@ -647,8 +663,15 @@ const gatheringLabels = ["Color", "Line", "Surface"];
 
         activeImageIndex = (index + activeLightboxImages.length) % activeLightboxImages.length;
         const image = activeLightboxImages[activeImageIndex];
+        const positionLabel = `${activeLightboxLabel}, image ${activeImageIndex + 1} of ${activeLightboxImages.length}`;
         lightboxImage.src = image.src;
         lightboxImage.alt = image.alt;
+        if (lightboxTitle instanceof HTMLElement) {
+          lightboxTitle.textContent = positionLabel;
+        }
+        if (lightboxDescription instanceof HTMLElement) {
+          lightboxDescription.textContent = image.alt;
+        }
         if (lightboxCredit instanceof HTMLElement) {
           lightboxCredit.textContent = image.credit;
         }
@@ -662,6 +685,7 @@ const gatheringLabels = ["Color", "Line", "Surface"];
         }
 
         const gallery = button.getAttribute("data-lightbox-gallery") || "";
+        activeLightboxLabel = button.getAttribute("data-lightbox-label") || "Image gallery";
         activeLightboxImages = Array.from(
           document.querySelectorAll(`[data-lightbox-gallery="${gallery}"]`)
         )
