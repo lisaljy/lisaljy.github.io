@@ -177,7 +177,7 @@ const projectLinks = projects.map((project) => project.title);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/jpeg" href="/favicon.jpg" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
     <title>{title} | LISA LIAO JINGYI</title>
   </head>
   <body>
@@ -401,9 +401,9 @@ const projectLinks = projects.map((project) => project.title);
                       data-lightbox-alt={image.alt}
                       data-gallery={project.title}
                       data-gallery-index={String(index)}
-                      aria-label="Enlarge image"
+                      aria-label={`Open image: ${image.alt}`}
                     >
-                      <img src={image.src} alt={image.alt} loading="lazy" />
+                      <img src={image.src} alt="" loading="lazy" />
                     </button>
                   ))}
                 </div>
