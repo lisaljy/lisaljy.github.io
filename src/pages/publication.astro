@@ -7,6 +7,30 @@ const sections = [
     title: "Conferences Presentation",
     items: [
       {
+        title: "Disability for AI: Alt-Text, Extraction, and the Making of AI Capital",
+        venue: "The 51st Annual Meeting of the Society for Social Studies of Science, 2026",
+        authors: "Jingyi LIAO, Yue ZHU",
+        abstract: [
+          "Alt-text has become a valuable resource for vision-language model development, as AI system depends on it to learn visual meaning. Yet it is rarely understood as a form of descriptive labor and situated knowledge emerging from accessibility practices. Instead of asking how AI for GOOD, this research focuses on how GOOD for AI, more specifically, how disability becomes a site of extraction. AI system seizes upon the semantic richness and scalability of alt-text, while filtering out the needs, preferences, and politics that made these practices meaningful in the first place.",
+          "Through a comparative interpretive analysis of dataset documentation, collection rationales, filtering procedures, and downstream framings in three influential image-text datasets (Conceptual Captions, WIT, and VizWiz), this paper focuses on the data construction phase and traces three mechanisms of transformation.",
+          "Conceptual Captions reveals how alt-text is rendered usable for AI through cleaning procedures that strip away disability-centered relevance. WIT shows how volunteering, originally mobilized to improve Wikipedia for visually impaired users, is reassembled as a general-purpose multimodal resource without acknowledging its accessibility context. Together, these two cases point to a structural challenge: AI pipelines mobilize extracted properties detached from their originating communities and revalorized as AI capital, while immobilizing disabled users’ needs, interpretive norms, and claims over how descriptive systems should function.",
+          "VizWiz, by contrast, shows a partial but limited form of resistance by grounding dataset generation in visually impaired users’ perspectives. Yet its exceptionality underscores the broader difficulty of keeping accessibility practices accountable to the communities from which they emerge."
+        ]
+      },
+      {
+        title: "Coding Against Exclusion: Collaborative Techno-Activism among Visually Impaired Programmers",
+        venue: "The 76th Annual International Communication (ICA) Conference, 2026",
+        authors: "Jingyi LIAO, Kuansong Victor ZHUANG",
+        abstract:
+          "Mainstream narratives of assistive technology often celebrate benevolent engineers (Rider, 2021) designing for disabled users, reinforcing a technological heroism in innovation. Meanwhile, scholars from digital innovation (Costanza-Chock, 2020; Von Hippel, 2005) highlight the creative agency of users in shaping technology. Paradoxically, in assistive technology, these “users” remain largely excluded from innovation itself. This research explores how blind programmers reclaim this space by designing and maintaining the tools they depend on. Focusing on screen readers—a core digital infrastructure resisting ocularcentrism exclusion—I began by interviewing members of the NVDA Chinese community and, through a snowball approach, reached more blind developers contributing to local screen readers and other software projects. Drawing on focus groups, I examine how they transform everyday coding into collaborative accessibility innovation and acts of self-advocacy. These practices challenge techno-solutionist narratives and reimagine innovation through disability-led collaboration, enacting a radical form of “Nothing about us without us” across global disability activism and the digital sphere.",
+        references: [
+          "Costanza-Chock, S. (2020). Design justice: Community-led practices to build the worlds we need. The MIT Press.",
+          "Rider, K. A. (2021). Volunteering the Valley: Designing technology for the common good in the San Francisco Bay Area (Doctoral dissertation, Queen's University (Canada)).",
+          "Von Hippel, E. (2005). Democratizing innovation: The evolving phenomenon of user innovation. Journal für Betriebswirtschaft, 55(1), 63-78."
+        ],
+        note: "NVDA is the world’s most well-known open-source screen reader project, originally initiated by blind developers in Australia and now expanded globally, including in China."
+      },
+      {
         title:
           "Who Drives Disability Technology: A 30-Year Evolutionary Analysis of Assistive Technology Patents in China",
         venue: "The 50th Annual Meeting of the Society for Social Studies of Science, 2025",
@@ -155,7 +179,16 @@ const sections = [
                       </dl>
                       <details class="abstract-note">
                         <summary>Abstract</summary>
-                        <p>{item.abstract}</p>
+                        {[item.abstract].flat().map((paragraph) => <p>{paragraph}</p>)}
+                        {item.references && (
+                          <div class="abstract-references">
+                            <h3>References and Notes</h3>
+                            <ol>
+                              {item.references.map((reference) => <li><em>{reference}</em></li>)}
+                            </ol>
+                            <p><em>Note: {item.note}</em></p>
+                          </div>
+                        )}
                       </details>
                     </article>
                   ))}
@@ -504,6 +537,28 @@ const sections = [
     color: #3f4a56;
     font-size: 0.98rem;
     line-height: 1.62;
+  }
+
+  .abstract-references {
+    margin-top: 16px;
+    padding: 0 20px;
+    font-size: 0.98rem;
+    line-height: 1.62;
+  }
+
+  .abstract-references h3 {
+    margin: 0 0 8px;
+    font-size: 1rem;
+  }
+
+  .abstract-references ol {
+    margin: 0;
+    padding-inline-start: 24px;
+  }
+
+  .abstract-references p {
+    padding-inline: 0;
+    background: transparent;
   }
 
   .publication-nav {
