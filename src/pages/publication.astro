@@ -55,6 +55,7 @@ const sections = [
         venue: "Journal of Social Computing, 2026",
         authors: "Wei Bai, Yan-Li Lee, Jingyi Liao, Lusi Wu, Mei Xie, Tao Zhou",
         doi: "https://doi.org/10.23919/JSC.2026.0012",
+        articleUrl: "https://www.sciopen.com/article/10.23919/JSC.2026.0012",
         abstract:
           "Equal pay is an essential component of gender equality, one of the Sustainable Development Goals of the United Nations. Using resume data of over ten million Chinese online job seekers in 2015, we study the current gender pay gap in China. The results show that on average women only earned 71.57% of what men earned in China. The gender pay gap exists across all age groups and educational levels. Contrary to the commonly held view that developments in education, economy, and a more open culture would reduce the gender pay gap, the fusion analysis of resume data and socio-economic data presents that they have not helped reach the gender pay equality in China. China seems to be stuck in a place where traditional methods cannot make further progress. Our analysis further shows that 81.47% of the variance in the gender pay gap can be potentially attributed to discrimination. In particular, compared with the unmarried, both the gender pay gap itself and proportion potentially attributed to discrimination of the married are larger, indicating that married women suffer greater inequality and more discrimination than unmarried ones. Taken together, we suggest that more research attention should be paid to the effect of discrimination in understanding gender pay gap based on the family constraint theory. We also suggest the Chinese government to increase investment in family-supportive policies and grants in addition to female education."
       },
@@ -174,6 +175,12 @@ const sections = [
                                 item.doi
                               )}
                             </dd>
+                          </>
+                        )}
+                        {item.articleUrl && (
+                          <>
+                            <dt>Article</dt>
+                            <dd><a href={item.articleUrl}>Publisher article</a></dd>
                           </>
                         )}
                       </dl>
